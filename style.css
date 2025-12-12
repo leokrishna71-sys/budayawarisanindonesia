@@ -1,0 +1,1232 @@
+/* RESET DASAR */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f9;
+    color: #000000;
+}
+
+/* --- Variabel Warna (Pastikan sudah ada atau tambahkan ini) --- */
+:root {
+    --primary-color: #005691; 
+    --secondary-color: #FF6B6B; 
+    --accent-color: #FFD93D; 
+    --text-color: #333333;
+    --dark-bg: #1e1e1e;
+}
+
+/* --- BAGIAN HEADER/BERANDA --- */
+header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    position: relative;
+    overflow: hidden; /* Penting untuk mengelola gambar di dalam */
+}
+
+/* Kontainer Utama untuk Latar Belakang dan Gradien */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Ganti URL ini dengan gambar latar belakang yang Anda inginkan */
+    background: url('https://plus.unsplash.com/premium_photo-1661878915254-f3163e91d870?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover; 
+    background-attachment: fixed;
+    z-index: 1; 
+}
+
+/* Gradien Overlay (untuk membuat teks lebih jelas) */
+header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, 
+        rgba(0, 0, 0, 0.8) 0%, /* Kiri lebih gelap */
+        rgba(0, 0, 0, 0.4) 50%, 
+        rgba(0, 0, 0, 0.1) 100% /* Kanan lebih terang */
+    );
+    z-index: 2;
+}
+
+
+/* --- NAVIGASI (Layer 3) --- */
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    /* Efek modern transparan */
+    background-color: rgba(0, 0, 0, 0.2); 
+    backdrop-filter: blur(4px);
+    transition: background-color 0.3s;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: 500;
+}
+
+.navbar ul li a:hover {
+    color: var(--secondary-color);
+}
+
+
+/* --- KONTEN UTAMA HERO (Layer 4) --- */
+.hero-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left; /* Teks rata kiri seperti di desain */
+    padding: 0 10%;
+    position: relative;
+    z-index: 4; /* Pastikan konten di atas overlay */
+    max-width: 600px; /* Batasi lebar teks agar mudah dibaca */
+    margin-top: 80px; /* Kompensasi navbar fixed */
+}
+
+.hero-title {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    font-weight: 300;
+    color: #ffd93d; /* Highlight */
+}
+
+.cta-button {
+    background-color: var(--secondary-color);
+    color: var(--dark-bg);
+    text-decoration: none;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 10px rgba(255, 107, 107, 0.4);
+    width: fit-content;
+}
+
+.cta-button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+
+/* --- Responsif Dasar --- */
+@media (max-width: 768px) {
+    .hero-content {
+        padding: 0 5%;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .navbar ul {
+        display: none; /* Sembunyikan link navbar pada HP (perlu menu hamburger jika ingin ditampilkan) */
+    }
+}
+
+/* HERO SECTION (Bagian Utama) */
+.hero-section {
+    background: url('Gambar/images.jpg') no-repeat center center/cover; /* PLACEHOLDER JPG */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding-top: 60px; /* Jarak dari fixed navbar */
+    position: relative;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay gelap */
+    z-index: 1;
+}
+
+.hero-section * {
+    z-index: 2;
+}
+
+.hero-section h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px #000;
+}
+
+.hero-section p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #ff6347; /* Warna menarik */
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #e55338;
+    transform: scale(1.05);
+}
+
+/* BAGIAN KONTEN UMUM */
+.content-section {
+    padding: 80px 50px;
+    text-align: center;
+}
+
+.grey-bg {
+    background-color: #eef;
+}
+
+.content-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #4CAF50; /* Hijau Budaya */
+}
+
+/* CARD CONTAINER (Tari & Musik) */
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    max-width: 45%;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* KULINER GRID */
+.kuliner-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
+
+.kuliner-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: opacity 0.3s;
+}
+
+.kuliner-item img:hover {
+    opacity: 0.8;
+}
+
+.kuliner-item h4 {
+    margin-top: 10px;
+    color: #C62828; /* Merah Indonesia */
+}
+
+#show-more-food {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#show-more-food:hover {
+    background-color: #388E3C;
+}
+
+/* WARISAN DETAIL */
+.warisan-detail {
+    display: flex;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+    gap: 50px;
+}
+
+.warisan-detail img {
+    width: 40%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.detail-text {
+    width: 60%;
+}
+
+.detail-text h3 {
+    font-size: 2em;
+    color: #0D47A1; /* Biru Laut */
+    margin-bottom: 15px;
+}
+
+/* FOOTER */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+}
+
+/* RESPONSIVE (Opsional tapi penting untuk menarik) */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+    .navbar ul {
+        display: none; /* Sembunyikan navigasi di mobile, bisa diganti dengan menu hamburger JS */
+    }
+
+    .hero-section h1 {
+        font-size: 2.5em;
+    }
+
+    .card-container, .kuliner-grid, .warisan-detail {
+        flex-direction: column;
+        display: flex;
+        gap: 20px;
+    }
+
+    .card, .warisan-detail img, .detail-text {
+        max-width: 100%;
+        width: 100%;
+    }
+}/* Dalam file style.css */
+
+.logo {
+    font-size: 1.8em; /* Ukuran lebih besar */
+    font-weight: 800;
+    /* Membuat teks logo menggunakan gradient Merah-Kuning (Merah Putih Emas) */
+    background: linear-gradient(45deg, #FF4B5C, #FFD700); 
+    -webkit-background-clip: text; /* Wajib untuk gradient pada teks di Chrome/Safari */
+    color: transparent; /* Membuat warna teks transparan */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Efek bayangan ringan */
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05); /* Memperbesar sedikit saat dihover */
+    /* Tambahkan efek glow tipis */
+    text-shadow: 0 0 5px #FFD700, 0 0 10px #FF4B5C;
+}
+
+/* KODE NAVIGASI LAINNYA TIDAK BERUBAH */
+/* ... */
+/* ==================================== */
+/* HERO SECTION (LATAR BELAKANG) */
+/* ==================================== */
+.hero-section {
+    /* 1. Mengatur Gambar Latar Belakang */
+    /* Pastikan Anda memiliki file hero-bg.jpg di folder yang sama! */
+    background: url('hero-bg.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white; /* Warna teks diubah menjadi putih */
+    position: relative; /* Penting untuk posisi overlay */
+}
+
+/* Overlay Gelap Agar Teks Terlihat Jelas */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* 2. Warna Overlay */
+    background-color: rgba(0, 0, 0, 0.65); /* Hitam 65% Transparansi */
+    z-index: 1; /* Overlay berada di bawah teks */
+}
+
+/* Memastikan Teks berada di atas Overlay */
+.hero-section * {
+    z-index: 2; /* Teks dan tombol berada di atas overlay (z-index: 1) */
+}
+
+/* Gaya Tulisan (Opsional) */
+.hero-section h1 {
+    font-size: 4em;
+    font-weight: 700;
+    /* Bayangan teks agar lebih menonjol di atas overlay */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+}
+
+/* KODE LAINNYA DI STYLE.CSS TIDAK BERUBAH */
+body
+/* ==================================== */
+/* 🎨 EFEK 3D & PENINGKATAN VISUAL */
+/* ==================================== */
+
+/* 1. LOGO - Efek Gradient dan Shadow (Sudah Dibuat, Dipertahankan) */
+.logo {
+    font-size: 1.8em;
+    font-weight: 800;
+    /* Gradient Merah-Kuning-Emas */
+    background: linear-gradient(45deg, #FF4B5C, #FFD700, #FF4B5C);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: transform 0.3s ease, text-shadow 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.08) rotate(-1deg); /* Sedikit putaran untuk dinamis */
+    text-shadow: 0 0 8px #FFD700, 0 0 15px #FF4B5C; /* Efek glow lebih kuat */
+}
+
+/* 2. NAVBAR - Efek Kaca Buram (Glassmorphism) */
+.navbar {
+    /* Background semi-transparan yang ada */
+    background-color: rgba(10, 10, 10, 0.6); 
+    /* Efek Glassmorphism: blur di belakang */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Garis batas tipis */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Bayangan untuk kedalaman */
+}
+
+.navbar ul li a:hover {
+    color: #ffd700;
+    background-color: rgba(255, 255, 255, 0.1); /* Sedikit latar belakang putih transparan */
+    border-radius: 5px;
+}
+
+/* 3. HERO SECTION - Konten Teks Lebih Menonjol */
+.hero-section h1 {
+    font-size: 4em;
+    font-weight: 900;
+    /* Meningkatkan bayangan teks untuk tampilan yang lebih 'keluar' */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(0, 0, 0, 0.9);
+}
+
+.hero-section p {
+    /* Sedikit bayangan juga pada paragraf */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+}
+
+/* 4. CTA BUTTON - Efek Tombol 3D (Pushable Button) */
+.cta-button {
+    /* Lapisan bawah (depth) */
+    background-color: #e55338; /* Warna yang lebih gelap */
+    /* Menggunakan padding dan border untuk menciptakan 'kedalaman' */
+    padding: 18px 35px; /* Sedikit lebih besar */
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.2em;
+
+    /* Lapisan atas (tombol itu sendiri) */
+    position: relative;
+    top: -5px; /* 'Menaikkan' tombol dari dasar */
+    box-shadow: 0 8px #a83d2a; /* Bayangan vertikal yang meniru dasar tombol */
+    transition: all 0.15s ease-out; /* Transisi lebih cepat untuk efek klik */
+}
+
+.cta-button:hover {
+    background-color: #ff6347; /* Warna atas lebih cerah saat hover */
+    top: -8px; /* Lebih terangkat saat hover */
+    box-shadow: 0 12px #a83d2a, 0 0 25px rgba(255, 99, 71, 0.7); /* Bayangan dan glow */
+}
+
+.cta-button:active {
+    top: 0; /* Tombol 'tertekan' ke bawah */
+    box-shadow: 0 2px #a83d2a; /* Bayangan minimal */
+}
+
+
+/* 5. CARD CONTAINER - Efek Kartu Bertumpuk */
+.card-container {
+    /* Menambahkan perspective untuk efek 3D yang lebih baik */
+    perspective: 1000px;
+}
+
+.card {
+    background-color: white;
+    padding: 25px; /* Padding sedikit lebih besar */
+    border-radius: 12px;
+    /* Shadow 3 lapis untuk kedalaman yang lebih baik */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.2), 0 15px 30px rgba(0, 0, 0, 0.1);
+    
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s;
+}
+
+.card:hover {
+    /* Transform 3D: Sedikit miring dan terangkat */
+    transform: translateY(-15px) rotateX(2deg) scale(1.02);
+    /* Bayangan lebih tegas dan menyebar */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* 6. KULINER ITEM - Efek Hover dan Boundary */
+.kuliner-item {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.kuliner-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.kuliner-item img {
+    border: 3px solid #4CAF50; /* Border hijau untuk menonjolkan gambar */
+}
+
+/* 7. WARISAN DETAIL - Efek Konten Menonjol */
+.warisan-detail {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Kontainer utama memiliki bayangan */
+}
+
+.warisan-detail img {
+    /* Bayangan yang lebih kuat untuk meniru kedalaman */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+.warisan-detail img:hover {
+    transform: rotateY(5deg) scale(1.05); /* Efek miring saat dihover */
+}
+
+/* 8. FOOTER - Lebih Elegan */
+footer {
+    background-color: #1a1a1a;
+    padding: 30px 0;
+    border-top: 3px solid #ffd700;
+}
+
+
+/* --- INTEGRASI KE CSS ASLI ANDA --- */
+/* Silakan salin dan timpa bagian-bagian yang terkait di file CSS Anda. */
+
+/* Contoh: Timpa .navbar, .logo, .hero-section h1, .cta-button, .card, .card:hover, dll. */
+
+
+/* ==================================== */
+/* PASTIKAN UNTUK MEMASUKKAN KODE INI */
+/* ==================================== */
+
+/* KODE CSS ASLI ANDA */
+
+/* RESET DASAR */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f9;
+    color: #000000;
+}
+
+/* HEADER & NAVIGASI */
+.navbar {
+    background-color: rgba(10, 10, 10, 0.6); /* <-- MODIFIKASI: Transparansi 0.6 */
+    color: white;
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s;
+    /* --- EFEK BARU START --- */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    /* --- EFEK BARU END --- */
+}
+
+.logo {
+    /* --- EFEK BARU START (Ambil dari modifikasi .logo) --- */
+    font-size: 1.8em; 
+    font-weight: 800;
+    background: linear-gradient(45deg, #FF4B5C, #FFD700, #FF4B5C); 
+    -webkit-background-clip: text;
+    color: transparent; 
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: transform 0.3s ease, text-shadow 0.3s;
+    /* --- EFEK BARU END --- */
+}
+
+.logo:hover {
+    transform: scale(1.08) rotate(-1deg);
+    text-shadow: 0 0 8px #FFD700, 0 0 15px #FF4B5C;
+}
+
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: #ffd700;
+    background-color: rgba(255, 255, 255, 0.1); /* <-- MODIFIKASI */
+    border-radius: 5px;
+}
+
+/* HERO SECTION (Bagian Utama) */
+.hero-section {
+    background: url('hero-bg.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding-top: 60px;
+    position: relative;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.65); /* Overlay gelap */
+    z-index: 1;
+}
+
+.hero-section * {
+    z-index: 2;
+}
+
+.hero-section h1 {
+    font-size: 4em; /* <-- MODIFIKASI: Ukuran lebih besar */
+    font-weight: 700;
+    margin-bottom: 20px;
+    /* --- EFEK BARU START --- */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(0, 0, 0, 0.9);
+    /* --- EFEK BARU END --- */
+}
+
+.hero-section p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    /* --- EFEK BARU START --- */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+    /* --- EFEK BARU END --- */
+}
+
+.cta-button {
+    /* --- EFEK BARU START (Ambil dari modifikasi .cta-button) --- */
+    background-color: #e55338; /* Warna dasar (depth) */
+    display: inline-block;
+    color: white;
+    padding: 18px 35px; /* Padding lebih besar */
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.2em; /* Ukuran font lebih besar */
+    
+    /* Efek 3D */
+    position: relative;
+    top: -5px; 
+    box-shadow: 0 8px #a83d2a; 
+    transition: all 0.15s ease-out;
+    /* --- EFEK BARU END --- */
+}
+
+.cta-button:hover {
+    background-color: #ff6347; /* Warna atas saat hover */
+    /* --- EFEK BARU START --- */
+    top: -8px; 
+    box-shadow: 0 12px #a83d2a, 0 0 25px rgba(255, 99, 71, 0.7);
+    /* --- EFEK BARU END --- */
+}
+
+.cta-button:active {
+    top: 0; 
+    box-shadow: 0 2px #a83d2a;
+}
+
+/* BAGIAN KONTEN UMUM */
+.content-section {
+    padding: 80px 50px;
+    text-align: center;
+}
+
+.grey-bg {
+    background-color: #eef;
+}
+
+.content-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #4CAF50;
+    /* Bayangan teks lembut */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); 
+}
+
+/* CARD CONTAINER (Tari & Musik) */
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    margin-top: 30px;
+    /* --- EFEK BARU START --- */
+    perspective: 1000px;
+    /* --- EFEK BARU END --- */
+}
+
+.card {
+    background-color: white;
+    padding: 25px; /* <-- MODIFIKASI: Padding lebih besar */
+    border-radius: 12px; /* <-- MODIFIKASI: Radius lebih besar */
+    flex: 1;
+    max-width: 45%;
+    /* --- EFEK BARU START (Bayangan 3 lapis) --- */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.2), 0 15px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s;
+    /* --- EFEK BARU END --- */
+}
+
+.card:hover {
+    /* --- EFEK BARU START (Transform 3D) --- */
+    transform: translateY(-15px) rotateX(2deg) scale(1.02);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 20px 40px rgba(0, 0, 0, 0.35);
+    /* --- EFEK BARU END --- */
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* KULINER GRID */
+.kuliner-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
+
+.kuliner-item {
+    /* --- EFEK BARU START --- */
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    /* --- EFEK BARU END --- */
+}
+
+.kuliner-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.kuliner-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: opacity 0.3s;
+    /* --- EFEK BARU START --- */
+    border: 3px solid #4CAF50; 
+    /* --- EFEK BARU END --- */
+}
+
+.kuliner-item img:hover {
+    opacity: 0.9;
+}
+
+.kuliner-item h4 {
+    margin-top: 10px;
+    color: #C62828;
+}
+
+#show-more-food {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    /* Efek tombol sederhana */
+    box-shadow: 0 4px #388E3C; 
+    position: relative;
+    top: 0;
+}
+
+#show-more-food:hover {
+    background-color: #388E3C;
+}
+
+#show-more-food:active {
+    top: 2px;
+    box-shadow: 0 2px #388E3C;
+}
+
+/* WARISAN DETAIL */
+.warisan-detail {
+    display: flex;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+    gap: 50px;
+    /* --- EFEK BARU START --- */
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    /* --- EFEK BARU END --- */
+}
+
+.warisan-detail img {
+    width: 40%;
+    height: auto;
+    border-radius: 10px;
+    /* --- EFEK BARU START --- */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+    /* --- EFEK BARU END --- */
+}
+
+.warisan-detail img:hover {
+    transform: rotateY(5deg) scale(1.05);
+}
+
+.detail-text {
+    width: 60%;
+}
+
+.detail-text h3 {
+    font-size: 2em;
+    color: #0D47A1;
+    margin-bottom: 15px;
+}
+
+/* FOOTER */
+footer {
+    /* --- EFEK BARU START --- */
+    background-color: #1a1a1a;
+    padding: 30px 0;
+    border-top: 3px solid #ffd700;
+    /* --- EFEK BARU END --- */
+    color: white;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+    .navbar ul {
+        display: none;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5em;
+    }
+
+    .card-container, .kuliner-grid, .warisan-detail {
+        flex-direction: column;
+        display: flex;
+        gap: 20px;
+    }
+    
+    /* Kuliner grid kembali ke satu kolom di mobile */
+    .kuliner-grid {
+         grid-template-columns: 1fr;
+    }
+
+    .card, .warisan-detail img, .detail-text {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+/* ==================================== */
+/* 1. RESET DAN FONT DASAR */
+/* ==================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+/* ==================================== */
+/* 2. HEADER DAN NAVIGASI */
+/* ==================================== */
+header {
+    background: linear-gradient(135deg, #004d40, #00796b); /* Hijau Tua/Tosca Indonesia */
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.navbar ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+}
+
+/* ==================================== */
+/* 3. HERO SECTION (Halaman Utama) */
+/* ==================================== */
+.hero-section {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: #e0f2f1; /* Warna latar cerah */
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #004d40;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #ff9800; /* Orange Terang (untuk aksi) */
+    color: white;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #f57c00;
+}
+
+.description-text {
+    max-width: 800px;
+    margin: 20px auto;
+    font-style: italic;
+    color: #555;
+}
+
+.hero-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+/* ==================================== */
+/* 4. CONTENT SECTIONS */
+/* ==================================== */
+.content-section {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.content-section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #004d40;
+    font-size: 2rem;
+    border-bottom: 2px solid #ff9800;
+    display: inline-block;
+    padding-bottom: 5px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    flex: 1 1 300px; /* Fleksibel untuk 3 kolom */
+    text-align: left;
+}
+
+.card h3 {
+    color: #00796b;
+    margin-bottom: 10px;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.image-caption {
+    font-size: 0.9em;
+    color: #666;
+    border-left: 3px solid #ff9800;
+    padding-left: 10px;
+    margin-top: 10px;
+}
+
+/* ==================================== */
+/* 5. FOOTER */
+/* ==================================== */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    margin-top: 40px;
+}
+
+/* ==================================== */
+/* 6. STYLE KHUSUS HALAMAN PENILAIAN */
+/* ==================================== */
+.evaluation-intro {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.feedback-form {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.feedback-form h2 {
+    color: #004d40;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+/* Input Text dan Textarea */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #00796b;
+    outline: none;
+}
+
+.submit-button {
+    background-color: #ff9800;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.submit-button:hover {
+    background-color: #f57c00;
+}
+
+/* ==================================== */
+/* 7. MEDIA QUERIES (Responsif) */
+/* ==================================== */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .navbar ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .card-container {
+        flex-direction: column;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+}
